@@ -156,7 +156,7 @@ public class AiliaFormat
     /**
     * \~japanese
     * @brief 画像のフォーマットを変換します。
-    * @param dst                  変換後画像の格納先(numeric型-stride * height * チャンネル数(解説参照)以上のサイズを確保すること)
+    * @param dst                  変換後画像の格納先(float型-stride * height * チャンネル数(解説参照)以上のサイズを確保すること)
     * @param dst_width            変換後画像の横幅
     * @param dst_height           変換後画像の高さ
     * @param dst_format           変換後画像の形式 (AILIA_NETWORK_IMAGE_FORMAT_*)

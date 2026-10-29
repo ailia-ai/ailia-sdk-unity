@@ -114,14 +114,14 @@ public class AiliaModel : IDisposable
     * \~japanese
     * @brief 利用可能な計算環境(CPU, GPU)の数を取得します。
     * @return
-    *   成功した場合は利用可能な環境の数を、失敗した場合は-1を返す。　
+    *   成功した場合は利用可能な環境の数を、失敗した場合は-1を返す。
     * @details
     *   利用可能な環境の数を取得します。
     *
     * \~english
     * @brief Get the number of available computing environments (CPU, GPU).
     * @return
-    *   Returns the number of available environments on success, -1 on failure.　
+    *   Returns the number of available environments on success, -1 on failure.
     * @details
     *   Get the number of available environments.
     */
@@ -1205,7 +1205,7 @@ public class AiliaModel : IDisposable
     /**
      * \~japanese
      * @brief 指定したBlobに入力データを設定します。
-     * @param input_data   推論データ X,Y,Z,Wの順でnumeric型で格納 サイズはネットファイルのinputSizeとなる　（バッファの確保してるので厳密にailia.csの説明と同じでいいかわからない）
+     * @param input_data   推論データ X,Y,Z,Wの順でfloat型で格納 サイズはネットファイルのinputSizeとなる　（バッファの確保してるので厳密にailia.csの説明と同じでいいかわからない）
      * @param idx          設定を変更するBlobのインデックス
      * @return
      *   成功した場合は true を、失敗した場合は false を返す。
@@ -1214,7 +1214,7 @@ public class AiliaModel : IDisposable
      *
      * \~english
      * @brief   Set input data to the specified Blob.
-     * @param input_data   Inference data X,Y,Z,W, in that order, stored as numeric type Size is inputSize of net file (I'm not sure if this is strictly the same as ailia.cs description, since buffer is allocated)
+     * @param input_data   Inference data X,Y,Z,W, in that order, stored as float type Size is inputSize of net file (I'm not sure if this is strictly the same as ailia.cs description, since buffer is allocated)
      * @param idx          Index of Blob to change settings
      * @return
      *   Returns true on success, false on failure.
@@ -1503,7 +1503,7 @@ public class AiliaModel : IDisposable
         {
             if (logging)
             {
-                Debug.Log("ailiaUpdate failed " + status + " (" + GetStatusString(status) + ")");
+                Debug.Log("ailiaCopyBlobData failed " + status + " (" + GetStatusString(status) + ")");
             }
             return false;
         }

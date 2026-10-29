@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>ailia</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.6-r6b4640670(C)2018 - 2025 AXELL CORPORATION</string>
+	<string>1.7-r4f2ffbfee(C)2018 - 2026 AXELL CORPORATION</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleLongVersionString</key>
-	<string>1.6.1.45-r6b4640670</string>
+	<string>1.7.0.2835-r4f2ffbfee</string>
 	<key>CFBundleName</key>
 	<string>ailia</string>
 	<key>CFBundlePackageType</key>
@@ -29,6 +29,6 @@
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>(C)2018 - 2025 AXELL CORPORATION</string>
+	<string>(C)2018 - 2026 AXELL CORPORATION</string>
 </dict>
 </plist>
