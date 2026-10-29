@@ -12,6 +12,7 @@
 * @date  May 25, 2023
 */
 using UnityEngine;
+using UnityEngine.Scripting;
 using System.Collections;
 using System.IO;
 using System;
@@ -221,6 +222,14 @@ public class Ailia
     * Indicates that the shape is more than 5 dimensional
     */
     public const Int32  AILIA_STATUS_NDIMENSION_SHAPE        =( -23);
+    /**
+    * \~japanese
+    * すでにモデルが読み込み済みであることを示す
+    *
+    * \~english
+    * Model file was already loaded
+    */
+    public const Int32  AILIA_STATUS_ALREADY_LOADED          =( -24);
     /**
     * \~japanese
     * 不明なエラー
@@ -761,9 +770,9 @@ public class Ailia
     * \~japanese
     * @brief 推論を行い推論結果を取得します。
     * @param net                         ネットワークオブジェクトポインタ
-    * @param dest                        推論結果書き出し先バッファ X,Y,Z,Wの順でnumeric型で格納 サイズはネットファイルのoutputSizeとなる
+    * @param dest                        推論結果書き出し先バッファ X,Y,Z,Wの順でfloat型で格納 サイズはネットファイルのoutputSizeとなる
     * @param dest_size                   推論結果書き出し先バッファのbyte数
-    * @param src                         推論データ X,Y,Z,Wの順でnumeric型で格納 サイズはネットファイルのinputSizeとなる
+    * @param src                         推論データ X,Y,Z,Wの順でfloat型で格納 サイズはネットファイルのinputSizeとなる
     * @param src_size                    推論データのbyte数
     * @return
     *   成功した場合は \ref AILIA_STATUS_SUCCESS 、そうでなければエラーコードを返す。
@@ -771,9 +780,9 @@ public class Ailia
     * \~english
     * @brief   Infer and get the result of inference.
     * @param net         Network object pointer
-    * @param dest        Buffer to which inference result is written, stored in numeric type in the order of X,Y,Z,W Size is outputSize of net file
+    * @param dest        Buffer to which inference result is written, stored in float type in the order of X,Y,Z,W Size is outputSize of net file
     * @param dest_size   Number of bytes in the buffer to which inference results are written
-    * @param src         Inference data X,Y,Z,W stored in order by numeric type Size is inputSize of net file
+    * @param src         Inference data X,Y,Z,W stored in order by float type Size is inputSize of net file
     * @param src_size    Number of bytes of inference data
     * @return
     *   If the function is successful, returns \ref AILIA_STATUS_SUCCESS, otherwise returns an error code.
@@ -871,7 +880,7 @@ public class Ailia
     * \~japanese
     * @brief 推論時の内部データ(Blob)を取得します。
     * @param net          ネットワークオブジェクトポインタ
-    * @param dest         推論結果書き出し先バッファ X,Y,Z,Wの順でnumeric型で格納
+    * @param dest         推論結果書き出し先バッファ X,Y,Z,Wの順でfloat型で格納
     * @param dest_size    推論結果書き出し先バッファのbyte数
     * @param blob_idx     blobのインデックス (0～ ailiaGetBlobCount() -1)
     * @return
@@ -882,7 +891,7 @@ public class Ailia
     * \~english
     * @brief   Get internal data (Blob) at inference time.
     * @param net         Network object pointer
-    * @param dest        Buffer to which inference result is written out Stored in numeric type in the order of X,Y,Z,W
+    * @param dest        Buffer to which inference result is written out Stored in float type in the order of X,Y,Z,W
     * @param dest_size   Number of bytes in the buffer to which inference results are written
     * @param blob_idx    Index of blob (0 to ailiaGetBlobCount() -1)
     * @return
@@ -1039,7 +1048,7 @@ public class Ailia
     * \~japanese
     * @brief 指定したBlobに入力データを与えます。
     * @param net          ネットワークオブジェクトポインタ
-    * @param src          推論データ X,Y,Z,Wの順でnumeric型で格納 サイズはネットファイルのinputSizeとなる
+    * @param src          推論データ X,Y,Z,Wの順でfloat型で格納 サイズはネットファイルのinputSizeとなる
     * @param src_size     推論データサイズ
     * @param blob_idx     入力するblobのインデックス
     * @return
@@ -1051,7 +1060,7 @@ public class Ailia
     * \~english
     * @brief   Give input data to the specified Blob.
     * @param net        Network object pointer
-    * @param src        Inference data X,Y,Z,W stored in order by numeric type Size is inputSize of net file
+    * @param src        Inference data X,Y,Z,W stored in order by float type Size is inputSize of net file
     * @param src_size   Inference data size
     * @param blob_idx   Index of input blob
     * @return
@@ -1256,6 +1265,10 @@ public class Ailia
 
     [StructLayout(LayoutKind.Sequential)]
     public class AILIAEnvironment {
+        [Preserve]
+        public AILIAEnvironment()
+        {
+        }
         /**
         * \~japanese
         * 環境を識別するID
@@ -1528,11 +1541,18 @@ public class Ailia
     /**
     * \~japanese
     * プロファイルモードを無効にします(デフォルト)
+    *
+    * \~english
+    * Disable profile mode (Default)
     */
     public const UInt32 AILIA_PROFILE_DISABLE     = (0x00);
     /**
     * \~japanese
-    * レイヤー別の処理時間を計測します。複数回推論した場合は初回実行を除く平均値が保存されます。
+    * レイヤー別の処理時間を計測します。複数回推論した場合は初回を除いた平均値が保存されます。
+    *
+    * \~english
+    * Measure the processing time for each layer.
+    * If you infer multiple times, the average value excluding the first execution is saved.
     */
     public const UInt32 AILIA_PROFILE_AVERAGE     = (0x01);
 

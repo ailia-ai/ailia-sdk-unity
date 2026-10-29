@@ -76,7 +76,7 @@ public class AiliaFeatureExtractor
     * \~japanese
     * @brief 特徴の抽出を行います。
     * @param fextractor                  特徴抽出オブジェクトポインタ
-    * @param dst                         特徴の格納先ポインタ(numeric型)
+    * @param dst                         特徴の格納先ポインタ(float型)
     * @param dst_size                    dstのサイズ(byte)
     * @param src                         画像データ(32bpp)
     * @param src_stride                  1ラインのバイト数
@@ -89,7 +89,7 @@ public class AiliaFeatureExtractor
     * \~english
     * @brief   Extract features.
     * @param fextractor   Feature extraction object pointer
-    * @param dst          Pointer to feature storage (type numeric)
+    * @param dst          Pointer to feature storage (type float)
     * @param dst_size     Size of dst (byte)
     * @param src image    Data (32bpp)
     * @param src_stride   Number of bytes per line
@@ -108,9 +108,9 @@ public class AiliaFeatureExtractor
     * @param fextractor                  特徴抽出オブジェクトポインタ
     * @param distance                    特徴間距離
     * @param distance_type               特徴間距離の種別
-    * @param feature1                    特徴の格納先ポインタ(numeric型)
+    * @param feature1                    特徴の格納先ポインタ(float型)
     * @param feature1_size               dstのサイズ(byte)
-    * @param feature2                    特徴の格納先ポインタ(numeric型)
+    * @param feature2                    特徴の格納先ポインタ(float型)
     * @param feature2_size               dstのサイズ(byte)
     * @return
     *   成功した場合は \ref AILIA_STATUS_SUCCESS 、そうでなければエラーコードを返す。
@@ -120,9 +120,9 @@ public class AiliaFeatureExtractor
     * @param fextractor      Feature extraction object pointer
     * @param distance        Distance between features
     * @param distance_type   Type of distance between features
-    * @param feature1        Pointer to feature storage (type numeric)
+    * @param feature1        Pointer to feature storage (type float)
     * @param feature1_size   Size of dst (in bytes)
-    * @param feature2        Pointer to store features (type numeric)
+    * @param feature2        Pointer to store features (type float)
     * @param feature2_size   Size of dst (byte)
     * @return
     *   If successful, return \ref AILIA_STATUS_SUCCESS, otherwise return error code.
